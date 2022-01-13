@@ -13,30 +13,38 @@
   <body>
     <h1 id="resulth1">
       Résultats de la recherche :
-      <span style="color: rgb(4, 4, 116)">Groom Service</span>
+      <span style="color: rgb(4, 4, 116)"><%= searchQuery %></span>
     </h1>
+
+    <% data["results"].forEach((movie)=>{ %>
     <div class="card mb-5 w-75">
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img src="" clas="card-img img-fluid" alt="image-film" />
+          <img
+            src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2<%=movie['poster_path'] %>"
+            clas="card-img img-fluid"
+            alt="image-film"
+          />
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h2 class="card-title">Groom Service</h2>
+            <h2 class="card-title"><%= movie["title"] %></h2>
             <hr />
-            <p class="card-text">
-              Le groom d'un hôtel de luxe présente quatre histoires, se passant
-              dans quatre chambres différentes. The missing ingredient : des
-              sorcières tentent d'invoquer l'esprit de la déesse Dia....
-            </p>
+            <p class="card-text"><%= movie["overview"] %></p>
             <br />
             <hr />
-            <p class="card-text"><b>Date de publication : </b> 1995</p>
-            <p class="card-text"><b>Nombre de votes: </b> 2,068</p>
-            <p class="card-text"><b>Note : </b> 5</p>
+            <p class="card-text">
+              <b>Date de publication : </b> <%= movie["release_date"] %>
+            </p>
+            <p class="card-text">
+              <b>Nombre de votes: </b> <%= movie["vote_count"] %>
+            </p>
+            <p class="card-text"><b>Note : </b> <%= movie["vote_average"] %></p>
           </div>
         </div>
       </div>
     </div>
+
+    <% }) %>
   </body>
 </html>
